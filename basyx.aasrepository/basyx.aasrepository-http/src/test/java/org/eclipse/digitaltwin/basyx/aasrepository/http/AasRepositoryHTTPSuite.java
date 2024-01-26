@@ -83,6 +83,20 @@ public abstract class AasRepositoryHTTPSuite {
 	}
 
 	@Test
+	public void test() throws IOException, ProtocolException {
+		CloseableHttpResponse response = BaSyxHttpTestUtils.executeGetOnURL("http://localhost:8050/");
+		System.out.println("####anykeywordIwant########################################");
+		System.out.println(BaSyxHttpTestUtils.getResponseAsString(response));
+	}
+
+	@Test
+	public void anothertest() throws IOException, ProtocolException {
+		CloseableHttpResponse response = BaSyxHttpTestUtils.executeGetOnURL("http://localhost:8050/api/v3.0");
+		System.out.println("####anykeywordIwant2########################################");
+		System.out.println(BaSyxHttpTestUtils.getResponseAsString(response));
+	}
+
+	@Test
 	public void aasUpload() throws IOException, ParseException {
 		String aasJsonContent = getAas1JSONString();
 		CloseableHttpResponse creationResponse = createAasOnServer(aasJsonContent);
