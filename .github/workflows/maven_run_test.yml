@@ -6,6 +6,8 @@ name: Java CI with Maven
 on:
   pull_request:
     branches: [ main ]
+  push:
+    branches: [ localtestbranch ]
 
 jobs:
   build:
@@ -21,7 +23,7 @@ jobs:
       - name: Start environment
         run: docker compose up -d --wait
       - name: Install BaSyx
-        run: mvn clean install # -Ddocker.namespace=eclipsebasyx
+        run: mvn clean install -Ddocker.namespace=eclipsebasyx
       - name: Stop environment
         if: always()
         run: docker compose down
